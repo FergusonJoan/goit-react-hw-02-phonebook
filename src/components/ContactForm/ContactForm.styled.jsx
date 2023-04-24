@@ -11,3 +11,16 @@ export const FormEl = styled(Form)`
 export const FormLabel = styled.label`
   color: red;
 `;
+export const FormInput = styled(Field)`
+  padding: 10px;
+  width: 400px;
+`;
+
+export const ErrorText = styled(ErrorMessage)`
+  color: red;
+`;
+
+export const FormButton = styled.button`
+  color: white;
+  background-color: blue;
+`;

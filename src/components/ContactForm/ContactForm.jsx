@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Formik, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import { schema } from './schema';
-import { FormEl, FormLabel } from './ContactForm.styled';
+import {
+  FormEl,
+  FormLabel,
+  ErrorText,
+  FormInput,
+  FormButton,
+} from './ContactForm.styled';
 
 const initialValues = {
   name: '',
@@ -11,7 +17,7 @@ const initialValues = {
 };
 
 export class ContactForm extends Component {
-  handleSubmit = (values, { resetForm }) => {
+  onHandleSubmit = (values, { resetForm }) => {
     this.props.onSubmit({ ...values });
     resetForm();
   };
@@ -21,32 +27,32 @@ export class ContactForm extends Component {
       <Formik
         initialValues={initialValues}
         validationShema={schema}
-        onSubmit={this.handleSubmit}
+        onSubmit={this.onHandleSubmit}
       >
         {(values, handleChange) => (
           <FormEl autoComplete="off">
             <FormLabel htmlFor="name">
               Name
-              <Field
+              <FormInput
                 type="text"
                 name="name"
                 value={values.name}
                 onChange={handleChange}
               />
-              <ErrorMessage name="name" />
+              <ErrorText name="name" />
             </FormLabel>
             <FormLabel htmlFor="number">
               Number
-              <Field
+              <FormInput
                 type="tel"
                 name="number"
                 value={values.name}
                 onChange={handleChange}
               />
-              <ErrorMessage name="number" />
+              <ErrorText name="number" />
             </FormLabel>
 
-            <button type="submit">Add contact</button>
+            <FormButton type="submit">Add contact</FormButton>
           </FormEl>
         )}
       </Formik>
