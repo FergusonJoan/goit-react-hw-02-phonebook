@@ -26,10 +26,10 @@ export class ContactForm extends Component {
     return (
       <Formik
         initialValues={initialValues}
-        validationShema={schema}
+        validationSchema={schema}
         onSubmit={this.onHandleSubmit}
       >
-        {(values, handleChange) => (
+        {({ values, handleChange }) => (
           <FormEl autoComplete="off">
             <FormLabel htmlFor="name">
               Name
@@ -46,7 +46,7 @@ export class ContactForm extends Component {
               <FormInput
                 type="tel"
                 name="number"
-                value={values.name}
+                value={values.number}
                 onChange={handleChange}
               />
               <ErrorText name="number" />

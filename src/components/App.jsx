@@ -22,7 +22,6 @@ export class App extends Component {
     const isExist = contacts.some(
       ({ name }) => name.toLowerCase() === contact.name.toLowerCase()
     );
-    console.log(isExist);
     if (isExist) {
       alert(`${contact.name} is already in contacts.`);
       return;
@@ -56,13 +55,13 @@ export class App extends Component {
         <ContactForm onSubmit={this.formSubmit} />
         <h2>Contacts</h2>
         {!!contacts.length ? (
-          <>
+          <div>
             <Filter value={filter} onChange={this.onChangeFilter} />
             <ContactList
               contacts={filteredContacts}
               onDeleteContact={this.clearContact}
             />
-          </>
+          </div>
         ) : (
           <p>There is no contacts here</p>
         )}

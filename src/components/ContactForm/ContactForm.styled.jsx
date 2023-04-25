@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { Form, Field, ErrorMessage } from 'formik';
 
 export const FormEl = styled(Form)`
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,18 +10,25 @@ export const FormEl = styled(Form)`
 `;
 
 export const FormLabel = styled.label`
-  color: red;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
 `;
 export const FormInput = styled(Field)`
-  padding: 10px;
-  width: 400px;
+  padding: 5px 10px;
+  width: 250px;
+  border: 1px solid;
+  border-radius: 3px;
 `;
 
 export const ErrorText = styled(ErrorMessage)`
   color: red;
+  font-size: 14px;
 `;
 
 export const FormButton = styled.button`
-  color: white;
-  background-color: blue;
+  padding: 5px 10px;
+  background-color: white;
+  border: 1px solid;
+  border-radius: 3px;
 `;
