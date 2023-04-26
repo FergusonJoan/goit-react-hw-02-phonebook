@@ -16,49 +16,47 @@ const initialValues = {
   number: '',
 };
 
-export class ContactForm extends Component {
-  onHandleSubmit = (values, { resetForm }) => {
-    this.props.onSubmit({ ...values });
-    resetForm();
-  };
+const onHandleSubmit = (values, { resetForm }) => {
+  this.props.onSubmit({ ...values });
+  resetForm();
+};
 
-  render() {
-    return (
-      <Formik
-        initialValues={initialValues}
-        validationSchema={schema}
-        onSubmit={this.onHandleSubmit}
-      >
-        {({ values, handleChange }) => (
-          <FormEl autoComplete="off">
-            <FormLabel htmlFor="name">
-              Name
-              <FormInput
-                type="text"
-                name="name"
-                value={values.name}
-                onChange={handleChange}
-              />
-              <ErrorText name="name" />
-            </FormLabel>
-            <FormLabel htmlFor="number">
-              Number
-              <FormInput
-                type="tel"
-                name="number"
-                value={values.number}
-                onChange={handleChange}
-              />
-              <ErrorText name="number" />
-            </FormLabel>
+export const ContactForm = () => {
+  return (
+    <Formik
+      initialValues={initialValues}
+      validationSchema={schema}
+      onSubmit={onHandleSubmit}
+    >
+      {({ values, handleChange }) => (
+        <FormEl autoComplete="off">
+          <FormLabel htmlFor="name">
+            Name
+            <FormInput
+              type="text"
+              name="name"
+              value={values.name}
+              onChange={handleChange}
+            />
+            <ErrorText name="name" />
+          </FormLabel>
+          <FormLabel htmlFor="number">
+            Number
+            <FormInput
+              type="tel"
+              name="number"
+              value={values.number}
+              onChange={handleChange}
+            />
+            <ErrorText name="number" />
+          </FormLabel>
 
-            <FormButton type="submit">Add contact</FormButton>
-          </FormEl>
-        )}
-      </Formik>
-    );
-  }
-}
+          <FormButton type="submit">Add contact</FormButton>
+        </FormEl>
+      )}
+    </Formik>
+  );
+};
 
 ContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
