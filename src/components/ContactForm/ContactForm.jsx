@@ -16,12 +16,11 @@ const initialValues = {
   number: '',
 };
 
-const onHandleSubmit = (values, { resetForm }) => {
-  this.props.onSubmit({ ...values });
-  resetForm();
-};
-
-export const ContactForm = () => {
+export const ContactForm = ({ onSubmit }) => {
+  const onHandleSubmit = (values, { resetForm }) => {
+    onSubmit({ ...values });
+    resetForm();
+  };
   return (
     <Formik
       initialValues={initialValues}
